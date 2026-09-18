@@ -11,7 +11,7 @@ public class DBConnection {
 
     private static final String USER = "root";
 
-    private static final String PASSWORD = "Lafamille2003@";
+    private static final String PASSWORD = System.getenv("STUDYFLOW_DB_PASSWORD");
 
     public static Connection getConnection() throws SQLException {
 
