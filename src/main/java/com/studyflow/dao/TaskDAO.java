@@ -74,7 +74,25 @@ public class TaskDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
+       
 
         return tasks;
+    }
+    public boolean updateTaskStatus(int taskId, String status) {
+
+        String sql = "UPDATE Tasks SET status = ? WHERE task_id = ?";
+
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+
+            statement.setString(1, status);
+            statement.setInt(2, taskId);
+
+            return statement.executeUpdate() == 1;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

@@ -3,43 +3,129 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
+
     <meta charset="UTF-8">
+
     <title>Create Account - StudyFlow</title>
+
     <link rel="stylesheet" href="style.css">
+
 </head>
 
-<body>
+<body class="auth-page">
 
-    <h1>StudyFlow</h1>
+    <div class="auth-container">
 
-    <h2>Create Account</h2>
 
-    <form action="register" method="post">
+        <!-- LEFT SIDE - PHOTO -->
 
-        <label>First Name:</label><br>
-        <input type="text" name="firstName" required>
-        <br><br>
+        <div class="auth-image">
 
-        <label>Last Name:</label><br>
-        <input type="text" name="lastName" required>
-        <br><br>
+            <img src="<%= request.getContextPath() %>/images/hero-students.png"
+                 alt="Students working together">
 
-        <label>Email:</label><br>
-        <input type="email" name="email" required>
-        <br><br>
+            <div class="auth-overlay">
 
-        <label>Password:</label><br>
-        <input type="password" name="password" required>
-        <br><br>
+                <h1>Join StudyFlow</h1>
 
-        <button type="submit">Create Account</button>
+                <p>
+                    Build your team.<br>
+                    Organize your work.<br>
+                    Achieve more together.
+                </p>
 
-    </form>
+            </div>
 
-    <br>
+        </div>
 
-    <a href="index.jsp">Back to Home</a>
+
+        <!-- RIGHT SIDE - REGISTER -->
+
+        <div class="auth-form">
+
+            <div class="auth-form-content">
+
+                <div class="auth-logo">
+                    🎓 Study<span>Flow</span>
+                </div>
+
+                <h2>Create Account</h2>
+
+                <p class="auth-subtitle">
+                    Create your account and start managing
+                    your student projects.
+                </p>
+
+
+                <form action="register" method="post">
+
+
+                    <label>First Name</label>
+
+                    <input
+                        type="text"
+                        name="firstName"
+                        placeholder="Enter your first name"
+                        required>
+
+
+                    <label>Last Name</label>
+
+                    <input
+                        type="text"
+                        name="lastName"
+                        placeholder="Enter your last name"
+                        required>
+
+
+                    <label>Email</label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        required>
+
+
+                    <label>Password</label>
+
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Create a password"
+                        required>
+
+
+                    <button type="submit" class="auth-submit">
+                        Create Account →
+                    </button>
+
+                </form>
+
+
+                <p class="auth-register">
+
+                    Already have an account?
+
+                    <a href="login.jsp">
+                        Login
+                    </a>
+
+                </p>
+
+
+                <a href="index.jsp" class="back-home">
+                    ← Back to Home
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </body>
+
 </html>

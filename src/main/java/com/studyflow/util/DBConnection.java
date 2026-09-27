@@ -7,20 +7,36 @@ import java.sql.SQLException;
 public class DBConnection {
 
     private static final String URL =
-            "jdbc:mysql://localhost:3306/studyflow?useSSL=false&serverTimezone=Europe/Berlin";
+            "jdbc:mysql://localhost:3306/studyflow"
+            + "?useSSL=false"
+            + "&allowPublicKeyRetrieval=true"
+            + "&serverTimezone=Europe/Berlin";
 
     private static final String USER = "root";
 
-    private static final String PASSWORD = System.getenv("STUDYFLOW_DB_PASSWORD");
+    private static final String PASSWORD =
+            System.getenv("STUDYFLOW_DB_PASSWORD");
 
     public static Connection getConnection() throws SQLException {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            throw new SQLException("MySQL Connector/J n'est pas chargé par Tomcat.", e);
+            throw new SQLException(
+                "MySQL Connector/J n'est pas chargé par Tomcat.", e
+            );
         }
 
-        return DriverManager.getConnection(URL, USER, PASSWORD);
+        if (PASSWORD == null || PASSWORD.isEmpty()) {
+            throw new SQLException(
+                "La variable d'environnement STUDYFLOW_DB_PASSWORD n'est pas configurée."
+            );
+        }
+
+        return DriverManager.getConnection(
+            URL,
+            USER,
+            PASSWORD
+        );
     }
 }
